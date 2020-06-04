@@ -1,8 +1,8 @@
 
 @extends('admin.layouts.default')
 
-@section('judul','Dosen')
-@section('Dosen','active')
+@section('judul','Staf')
+@section('Staf','active')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/vendors.min.css') }}">
@@ -72,7 +72,7 @@
 </div>
 
 
-@include('admin.dosen.form') 
+@include('admin.staf.form') 
 
 @endsection
 
@@ -151,10 +151,10 @@
           let id = $('#id').val();
           let dataKu = $('#formKu').serialize();
           if (save_method=="add") { 
-              url="{{ route('dosen.store') }}"
+              url="{{ route('staf.store') }}"
               method="POST"
           } else {
-              url="dosen/"+id
+              url="staf/"+id
               method="PUT"
           }
           $.ajax({

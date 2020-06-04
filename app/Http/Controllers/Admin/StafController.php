@@ -53,12 +53,17 @@ class StafController extends Controller
 
         $data = Staf::create([
             'nm_staf'=>$request->nm_staf,
+            'id_prodi'=>$request->id_prodi,
+            'username'=>$request->username,
+            'password'=>$password,
+            'jenkel'=>$request->jenkel,
+            'alamat'=>$request->alamat,
         ]);
 
         $user = User::create([
             'username'=>$request->username,
+            'email' => $request->username,
             'password' => Hash::make($password),
-            'show_password'=>$password,
         ]);
 
         $user->assignRole('Staf');

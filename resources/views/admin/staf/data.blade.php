@@ -6,6 +6,7 @@
             <th>Jenkel</th>
             <th>Progdi</th>
             <th>Alamat</th>
+            <th>Username</th>
             <th>Password</th>
         </tr>
     </thead>
@@ -13,10 +14,11 @@
         @foreach ($staf as $item)
         <tr class="clickable-row" data-id='{{ $item->id }}'>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->nm_dosen }}</td>
+            <td>{{ $item->nm_staf }}</td>
             <td>{{ $item->jenkel }}</td>
             <td>{{ $item->prodi->nm_prodi }}</td>
             <td>{{ $item->alamat }}</td>
+            <td>{{ $item->username }}</td>
             <td>{{ $item->password }}</td>
         </tr>
         @endforeach

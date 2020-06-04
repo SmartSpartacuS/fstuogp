@@ -17,6 +17,7 @@ class CreateStafsTable extends Migration
             $table->id();
             $table->string('nm_staf',100);
             $table->unsignedBigInteger('id_prodi');
+            $table->string('username',100);
             $table->string('password',30);
             $table->string('jenkel',11);
             $table->text('alamat');

@@ -67,6 +67,14 @@
                           </div>
                       </div>
                   </div>
+                  <div class="col-sm-12 col-lg-5 col-xl-5">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" required data-validation-required-message="Tidak Boleh Kosong">
+                        </div>
+                    </div>
+                </div>
                   <div class="col-sm-12 col-lg-12 col-xl-12">
                       <div class="form-group">
                           <div class="controls">
