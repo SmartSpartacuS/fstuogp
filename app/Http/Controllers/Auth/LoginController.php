@@ -63,7 +63,7 @@ class LoginController extends Controller
             return redirect()->route('mhs');
         }
         if ($user->hasRole('Staf')){
-            return redirect()->route('mhs');
+            return redirect()->route('staf');
         }
         if ($user->hasRole('Ketua Prodi')){
             return redirect()->route('kaprodi');
