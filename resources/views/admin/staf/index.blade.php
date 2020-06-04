@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
-                            <p class="card-text">Untuk mengubah atau menghapus data silahkan klik 2x pada data yang ingin diubah atau dihapus.</p>
+                            <p class="card-text">Untuk menghapus data silahkan klik 2x pada data yang ingin dihapus.</p>
                             <div class="table-responsive">
                                 <div id="tampil"></div>
                             </div>

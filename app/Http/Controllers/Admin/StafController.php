@@ -111,6 +111,10 @@ class StafController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cari=Staf::find($id);
+        $user=User::where('email', $cari->username)->first();
+        $role= $user->removeRole('Staf');
+        Staf::destroy($id);
+        User::destroy($user->id);
     }
 }

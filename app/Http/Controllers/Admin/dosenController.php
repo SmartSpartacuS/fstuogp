@@ -150,8 +150,11 @@ class dosenController extends Controller
      */
     public function destroy($id)
     {
+
         $cari=dosen::find($id);
-        User::where('email', $cari->NIDN)->delete();
+        $user=User::where('email', $cari->NIDN)->first();
+        $role= $user->removeRole('Dosen');
         dosen::destroy($id);
+        User::destroy($user->id);
     }
 }

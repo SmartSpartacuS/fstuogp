@@ -33,7 +33,7 @@
 <script>
     $(document).ready(function($) {
         $(".clickable-row").dblclick(function() {
-            // var href= $(this).data('id');
+            var href= $(this).data('id');
             // $('#alertPertanyaan').modal('show')
             //     $('#btnUbah').on('click',function(e){
             //         e.preventDefault()
