@@ -10,7 +10,9 @@
   <!--favicon-->
   <link rel="icon" href="{{ asset('toolspekerja/images/favicon.ico') }}" type="image/x-icon">
   <!-- Vector CSS -->
-  <link href="{{ asset('toolspekerja/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}') }}" rel="stylesheet"/>
+  <link href="{{ asset('toolspekerja/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
+  <!-- notifications css -->
+  <link href="{{ asset('toolspekerja/plugins/notifications/css/lobibox.min.css') }}" rel="stylesheet"/>
   <!-- simplebar CSS-->
   <link href="{{ asset('toolspekerja/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet"/>
   <!-- Bootstrap core CSS-->
