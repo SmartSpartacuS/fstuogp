@@ -6,6 +6,7 @@
             <th>Nama Mahasiswa</th>
             <th>Angkatan</th>
             <th>Jenkel</th>
+            <th>Alamat</th>
             <th>Password</th>
         </tr>
     </thead>
@@ -17,6 +18,7 @@
             <td>{{ $item->nm_mhs }}</td>
             <td>{{ $item->angkatan }}</td>
             <td>{{ $item->jenkel }}</td>
+            <td>{{ $item->alamat }}</td>
             <td>{{ $item->password }}</td>
         </tr>
         @endforeach
@@ -52,6 +54,7 @@
                             } else {
                                 $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
                             }
+                            $('#alamat').val(data.alamat);
                             $('.tampilModal').modal('show')
                             $('#judul').html('Silahkan Merubah Data')
                             $('#tombolForm').html('Ubah Data')

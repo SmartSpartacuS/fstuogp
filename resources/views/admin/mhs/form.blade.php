@@ -72,6 +72,14 @@
                         </div>
                     </div>
                   </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" name="alamat" id="alamat" class="form-control" required data-validation-required-message="Tidak Boleh Kosong">
+                        </div>
+                    </div>
+                </div>
                 </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>

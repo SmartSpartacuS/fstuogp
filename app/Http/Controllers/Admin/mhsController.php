@@ -52,16 +52,20 @@ class mhsController extends Controller
     public function store(Request $request)
     {
         $password= $this->generate_string($this->permitted_chars, 8);
+        $id_user= User::orderByDesc('id')->first()->id+1;
         $mhs = new mhs;
+        $mhs->id=$id_user;
         $mhs->NPM=$request->NPM;
         $mhs->id_prodi=$request->id_prodi;
         $mhs->nm_mhs=$request->nm_mhs;
         $mhs->password=$password;
         $mhs->jenkel=$request->jenkel;
         $mhs->angkatan=$request->angkatan;
+        $mhs->alamat=$request->alamat;
         $mhs->save();
 
         $user= User::create([
+            'id' => $id_user,
             'username' => $request['NPM'],
             'email' => $request['NPM'],
             'password' => Hash::make($password),
@@ -118,12 +122,6 @@ class mhsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'NPM'=>'required|max:15',
-        ],[
-            'NPM.unique'=>'NPM Sudah ada',
-        ]);
-
         mhs::where('id',$id)
             ->update([
                 'NPM'=>$request->NPM,
@@ -131,7 +129,13 @@ class mhsController extends Controller
                 'nm_mhs'=>$request->nm_mhs,
                 'jenkel'=>$request->jenkel,
                 'angkatan'=>$request->angkatan,
+                'alamat'=>$request->alamat,
             ]);
+        User::where('id',$id)
+        ->update([
+            'username' => $request['NPM'],
+            'email' => $request['NPM'],
+        ]);
 
     }
 
@@ -143,6 +147,7 @@ class mhsController extends Controller
      */
     public function destroy($id)
     {
-        $id->delete();
+        mhs::destroy($id);
+        User::destroy($id);
     }
 }

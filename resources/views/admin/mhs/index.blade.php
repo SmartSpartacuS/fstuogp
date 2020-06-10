@@ -178,6 +178,7 @@
                 }
                 $('#NPM').val('');
                 $('#nm_mhs').val('');
+                $('#alamat').val('');
               loadMoreData();
             //   pesan
           }
