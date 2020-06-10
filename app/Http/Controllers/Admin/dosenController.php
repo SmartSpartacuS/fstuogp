@@ -50,7 +50,7 @@ class dosenController extends Controller
     public function store(Request $request)
     {
         $password=app('App\Http\Controllers\Admin\mhsController')->generate_string($this->permitted_chars, 8);
-        // $password= $this->generate_string($this->permitted_chars, 8);
+        $id_user= User::orderByDesc('id')->first()->id+1;
  
         $this->validate($request,[
             'NIDN'=>'required|unique:dosen|max:18',
@@ -66,6 +66,7 @@ class dosenController extends Controller
             'alamat.required'=>'Tidak Boleh Kosong Woyy',
         ]);
         $dosen = new dosen;
+        $dosen->id=$id_user;
         $dosen->NIDN=$request->NIDN;
         $dosen->nm_dosen=$request->nm_dosen;
         $dosen->id_prodi=$request->id_prodi;
@@ -76,6 +77,7 @@ class dosenController extends Controller
         $dosen->alamat=$request->alamat;
         
         $user= User::create([
+            'id' => $id_user,
             'username' => $request['NIDN'],
             'email' => $request['NIDN'],
             'password' => Hash::make($password),
@@ -150,10 +152,9 @@ class dosenController extends Controller
      */
     public function destroy($id)
     {
-
         $cari=dosen::find($id);
-        $user=User::where('email', $cari->NIDN)->first();
-        $role= $user->removeRole('Dosen');
+        $user=User::find($id);
+        $role= $user->removeRole($cari->jabatan);
         dosen::destroy($id);
         User::destroy($user->id);
     }
