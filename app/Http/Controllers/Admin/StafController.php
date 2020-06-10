@@ -50,8 +50,10 @@ class StafController extends Controller
     public function store(Request $request)
     {
         $password=app('App\Http\Controllers\Admin\mhsController')->generate_string($this->permitted_chars, 8);
+        $id_user= User::orderByDesc('id')->first()->id+1;
 
         $data = Staf::create([
+            'id'=>$id_user,
             'nm_staf'=>$request->nm_staf,
             'id_prodi'=>$request->id_prodi,
             'username'=>$request->username,
@@ -61,6 +63,7 @@ class StafController extends Controller
         ]);
 
         $user = User::create([
+            'id'=>$id_user,
             'username'=>$request->username,
             'email' => $request->username,
             'password' => Hash::make($password),

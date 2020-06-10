@@ -170,7 +170,7 @@
                 }
             
               $('#NIDN').val('');
-              $('#nm_dosen').val('');
+              $('#nm_staf').val('');
               $('#alamat').val('');
               loadMoreData();
             //   pesan
