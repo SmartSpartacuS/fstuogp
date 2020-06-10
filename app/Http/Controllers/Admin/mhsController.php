@@ -147,7 +147,9 @@ class mhsController extends Controller
      */
     public function destroy($id)
     {
+        $user=User::find($id);
+        $role= $user->removeRole('Mahasiswa');
         mhs::destroy($id);
-        User::destroy($id);
+        User::destroy($user->id);
     }
 }
