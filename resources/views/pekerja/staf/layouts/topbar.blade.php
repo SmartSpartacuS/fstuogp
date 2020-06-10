@@ -20,7 +20,7 @@
          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
          <i class="fa fa-envelope-open-o"></i><span class="badge badge-light badge-up">12</span></a>
          <div class="dropdown-menu dropdown-menu-right">
-           <ul class="list-group list-group-flush">
+           <ul class="list-group list-group-flush bg-staf">
             <li class="list-group-item d-flex justify-content-between align-items-center">
              You have 12 new messages
              <span class="badge badge-light">12</span>
@@ -81,7 +81,7 @@
          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
        <i class="fa fa-bell-o"></i><span class="badge badge-info badge-up">14</span></a>
          <div class="dropdown-menu dropdown-menu-right">
-           <ul class="list-group list-group-flush">
+           <ul class="list-group list-group-flush bg-staf">
              <li class="list-group-item d-flex justify-content-between align-items-center">
              You have 14 Notifications
              <span class="badge badge-info">14</span>
@@ -127,7 +127,7 @@
          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
            <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
          </a>
-         <ul class="dropdown-menu dropdown-menu-right">
+         <ul class="dropdown-menu dropdown-menu-right bg-staf">
           <li class="dropdown-item user-details">
            <a href="javaScript:void();">
               <div class="media">

@@ -1,6 +1,6 @@
 <div class="modal fade tampilModal">
     <div class="modal-dialog">
-        <div class="modal-content bg-warnaku border-primary animated jackInTheBox">
+        <div class="modal-content bg-staf border-primary animated jackInTheBox">
             <div class="modal-header border-light-2">
                 <h5 id="judul" class="modal-title text-white"></h5>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">

@@ -74,9 +74,9 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-select option {
+/* select option {
     background: #000;
-}
+} */
 
 ::placeholder {
     color: #fff !important;
@@ -4615,6 +4615,9 @@ table.grid td {
 
 
 /* Background Colors */
+.bg-staf {
+    background-image: linear-gradient(567deg, rgba(165, 42, 4, 0.89), rgba(113, 102, 8, 0.89), rgba(13, 95, 16, 0.93), rgba(4, 79, 88, 0.94), rgba(19, 56, 86, 0.9), rgba(24, 32, 78, 0.94), rgba(100, 8, 115, 0.95));
+}
 .bg-primary {
     background-color: #14abef!important;
 }
@@ -6035,7 +6038,6 @@ table.grid td {
 
 @media only screen and (max-width: 1024px) {
   #sidebar-wrapper {
-	background:#000;  
     position: fixed;
 	top: 0px;
     left: -250px;
@@ -6048,6 +6050,9 @@ table.grid td {
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
 	box-shadow: none;
+}
+.sidebar-staf{
+    background-image: linear-gradient(567deg, rgba(165, 42, 4, 0.89), rgba(113, 102, 8, 0.89), rgba(13, 95, 16, 0.93), rgba(4, 79, 88, 0.94), rgba(19, 56, 86, 0.9), rgba(24, 32, 78, 0.94), rgba(100, 8, 115, 0.95));
 }
 
 .toggle-menu i {
