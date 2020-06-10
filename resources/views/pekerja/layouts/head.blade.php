@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
+  <meta name="csrf_token" content="{{csrf_token()}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
@@ -26,5 +27,6 @@
   <!-- Custom Style-->
   <link href="{{ asset('toolspekerja/css/app-style.css') }}" rel="stylesheet"/>
   
+   @yield('css')
   
 </head>

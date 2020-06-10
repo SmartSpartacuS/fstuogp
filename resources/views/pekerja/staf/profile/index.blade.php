@@ -2,11 +2,6 @@
 
 @section('judul','Profile')
 
-@section('css')
-  <!-- animate CSS-->
-  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>    
-@endsection
-
 @section('content')
 
 <div class="row">

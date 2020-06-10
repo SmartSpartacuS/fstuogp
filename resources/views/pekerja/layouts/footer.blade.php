@@ -36,7 +36,6 @@
   <script src="{{ asset('toolspekerja/js/jquery.loading-indicator.js') }}"></script>
   <!-- Custom scripts -->
   <script src="{{ asset('toolspekerja/js/app-script.js') }}"></script>
-  <!-- Chart js -->
   
   @yield('js')
   

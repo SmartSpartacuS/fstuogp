@@ -21,6 +21,7 @@ class CreateMhsTable extends Migration
             $table->string('password',30);
             $table->string('jenkel',11);
             $table->year('angkatan');
+            $table->text('alamat');
             $table->timestamps();
 
             $table->foreign('id_prodi')->references('id')->on('prodi')
