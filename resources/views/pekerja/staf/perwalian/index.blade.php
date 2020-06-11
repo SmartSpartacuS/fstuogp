@@ -1,6 +1,6 @@
 @extends('pekerja.staf.layouts.default')
 
-@section('judul','Mahasiswa')
+@section('judul','Perwalian')
 
 @section('css')
   <!--Data Tables -->
@@ -11,7 +11,7 @@
   <link href="{{ asset('toolsAdmin/css/plugins/forms/validation/form-validation.css') }}" rel="stylesheet" type="text/css">
   <!--Select Plugins-->
   <link href="{{ asset('toolspekerja/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/extensions/sweetalert2.min.css') }}">
+  <link href="{{ asset('toolsAdmin/vendors/css/extensions/sweetalert2.min.css') }} rel="stylesheet" type="text/css"">
   
 @endsection
 
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col-lg-12"> 
     <div class="card">
-      <div class="card-header"><i class="fa fa-table"></i> Data Mahasiswa</div>
+      <div class="card-header"><i class="fa fa-table"></i> Data @yield('judul')</div>
       <div class="card-body">
         <p>Untuk Menghapus Data Silahkan Klik 2x pada data yang ingin dihapus.</p>
         <button type="button" id="tambah" class="btn btn-light waves-effect waves-light mb-3"><i class="fa fa-plus-circle"></i> Tambah Data</button>

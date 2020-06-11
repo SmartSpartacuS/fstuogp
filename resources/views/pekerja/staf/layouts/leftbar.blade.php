@@ -2,21 +2,21 @@
  <div id="sidebar-wrapper" class="sidebar-staf" data-simplebar="" data-simplebar-auto-hide="true">
     <div class="brand-logo">
      <a href="index.html">
-      <img src="{{ asset('toolspekerja/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+      <img src="{{ asset('images/uogp.png') }}" class="logo-icon" alt="logo icon">
       <h5 class="logo-text">Staf {{ Auth::user()->staf->prodi->nm_prodi }}</h5>
     </a>
   </div>
   <div class="user-details">
    <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-     <div class="avatar"><img class="mr-3 side-user-img" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+     <div class="avatar"><img class="mr-3 side-user-img" src="{{ asset('images/uogp.png') }}" alt="user avatar"></div>
       <div class="media-body">
       <h6 class="side-user-name">{{ Auth::user()->staf->nm_staf }}</h6>
      </div>
       </div>
     <div id="user-dropdown" class="collapse">
      <ul class="user-setting-menu">
-           <li><a href="{{ route('StafProfile.index') }}"><i class="icon-user"></i>  Profile</a></li>
-     <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="icon-power"></i> Logout</a></li>
+       <li><a href="{{ route('StafProfile.index') }}"><i class="icon-user"></i>  Profile</a></li>
+       <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="icon-power"></i> Logout</a></li>
      </ul>
     </div>
      </div>
@@ -29,17 +29,12 @@
     </li>
      <li>
        <a href="{{ route('StafMhs.index') }}" class="waves-effect">
-         <i class="zmdi zmdi-view-dashboard"></i> <span>Mahasiswa</span>
+         <i class="zmdi zmdi-male-female"></i> <span>Mahasiswa</span>
        </a>
     </li>
      <li>
        <a href="{{ route('StafPerwalian.index') }}" class="waves-effect">
-         <i class="zmdi zmdi-view-dashboard"></i> <span>Perwalian</span>
-       </a>
-    </li>
-     <li>
-       <a href="{{ route('StafJadwal.index') }}" class="waves-effect">
-         <i class="zmdi zmdi-view-dashboard"></i> <span>Jadwal</span>
+         <i class="zmdi zmdi-accounts-outline"></i> <span>Perwalian</span>
        </a>
     </li>
    </ul>

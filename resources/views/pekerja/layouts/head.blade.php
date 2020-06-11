@@ -9,7 +9,7 @@
   <meta name="author" content=""/>
   <title>@yield('judul')</title>
   <!--favicon-->
-  <link rel="icon" href="{{ asset('toolspekerja/images/favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
   <!-- Vector CSS -->
   <link href="{{ asset('toolspekerja/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
   <!-- notifications css -->
