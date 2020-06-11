@@ -48,6 +48,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapKaProdiRoutes();
 
+        $this->mapDosenRoutes();
+
         $this->mapStafRoutes();
 
         $this->mapMhsRoutes();
@@ -71,6 +73,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace . '\Admin')
             ->group(base_path('routes/admin.php'));
     }
+   
     /**
      * Define the "web" routes for the application.
      *
@@ -84,6 +87,20 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('kaprodi')
             ->namespace($this->namespace . '\Kaprodi')
             ->group(base_path('routes/kaprodi.php'));
+    }
+     /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapDosenRoutes()
+    {
+        Route::middleware('web','auth','role:Dosen')
+            ->prefix('dosen')
+            ->namespace($this->namespace . '\Dosen')
+            ->group(base_path('routes/dosen.php'));
     }
     /**
      * Define the "web" routes for the application.

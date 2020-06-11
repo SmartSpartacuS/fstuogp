@@ -40,4 +40,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Staf::class,'username','username');
     }
+    public function dosen()
+    {
+        return $this->belongsTo(dosen::class,'id');
+    }
 }
