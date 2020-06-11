@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Staf;
 
-use App\Http\Controllers\Controller;
+use App\mhs;
+use App\dosen;
+use App\perwalian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PerwalianController extends Controller
 {
@@ -12,9 +16,34 @@ class PerwalianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $perwalian=perwalian::with('dosen')->get()->where('dosen.id_prodi',auth()->user()->staf->id_prodi)->all();
+        // return $mhs; 
+        
+        $dosen=dosen::orderBy('nm_dosen')->where('id_prodi',auth()->user()->staf->id_prodi)->get();
+        
+        if ($request->ajax()) {
+            $view = view('pekerja.staf.perwalian.data', [
+                'perwalian'=>$perwalian,
+            ]);
+            return $view;
+        } 
+        return view('pekerja.staf.perwalian.index', [
+            'perwalian'=>$perwalian,
+            'dosen'=>$dosen
+        ]);
+    }
+
+    // JSON untuk mhs
+    public function mhs()
+    {
+        $mhs=mhs::orderByDesc('NPM')
+            ->where('id_prodi',auth()->user()->staf->id_prodi)
+            ->whereNotIn('id',DB::table('perwalians')->pluck('mhs_id'))
+            ->get();
+        
+        return $mhs;
     }
 
     /**
@@ -35,7 +64,10 @@ class PerwalianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = perwalian::create([
+            'dosen_id'=>$request->dosen_id,
+            'mhs_id'=>$request->mhs_id,
+        ]);
     }
 
     /**
@@ -57,7 +89,8 @@ class PerwalianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perwalian=perwalian::find($id);
+        return $perwalian;
     }
 
     /**
@@ -69,7 +102,11 @@ class PerwalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        perwalian::where('id',$id)
+            ->update([
+                'dosen_id'=>$request->dosen_id,
+                'mhs_id'=>$request->mhs_id,
+            ]);
     }
 
     /**
@@ -80,6 +117,6 @@ class PerwalianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        perwalian::destroy($id);
     }
 }
