@@ -22,7 +22,7 @@
             <td>{{ $item->alamat }}</td>
             <td>
                 <div class="bt-switch">
-                <input type="checkbox" checked data-on-color="success" data-off-color="warning" data-on-text="Lihat" data-off-text="{{ $item->password }}">
+                <input type="checkbox" checked data-on-color="info" data-off-color="warning" data-on-text="Lihat" data-off-text="{{ $item->password }}">
                 </div>
             </td>
         </tr>

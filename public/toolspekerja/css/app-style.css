@@ -4618,6 +4618,9 @@ table.grid td {
 .bg-staf {
     background-image: linear-gradient(567deg, rgba(165, 42, 4, 0.89), rgba(113, 102, 8, 0.89), rgba(13, 95, 16, 0.93), rgba(4, 79, 88, 0.94), rgba(19, 56, 86, 0.9), rgba(24, 32, 78, 0.94), rgba(100, 8, 115, 0.95));
 }
+.bg-kaprodi {
+    background-image: url(../images/bg-themes/1.png);
+}
 .bg-primary {
     background-color: #14abef!important;
 }
@@ -6053,6 +6056,10 @@ table.grid td {
 }
 .sidebar-staf{
     background-image: linear-gradient(567deg, rgba(165, 42, 4, 0.89), rgba(113, 102, 8, 0.89), rgba(13, 95, 16, 0.93), rgba(4, 79, 88, 0.94), rgba(19, 56, 86, 0.9), rgba(24, 32, 78, 0.94), rgba(100, 8, 115, 0.95));
+}
+
+.sidebar-kaprodi{
+    background-image: url(../images/bg-themes/1.png);
 }
 
 .toggle-menu i {

@@ -1,5 +1,5 @@
  <!--Start sidebar-wrapper-->
- <div id="sidebar-wrapper" class="sidebar-staf" data-simplebar="" data-simplebar-auto-hide="true">
+ <div id="sidebar-wrapper" class="sidebar-kaprodi" data-simplebar="" data-simplebar-auto-hide="true">
   <div class="brand-logo">
    <a href="index.html">
     <img src="{{ asset('images/uogp.png') }}" class="logo-icon" alt="logo icon">
