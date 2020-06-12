@@ -1,6 +1,6 @@
-@extends('pekerja.staf.layouts.default')
+@extends('pekerja.kaprodi.layouts.default')
 
-@section('judul','Mahasiswa')
+@section('judul','Dosen')
 
 @section('css')
   <!--Data Tables -->
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col-lg-12"> 
     <div class="card">
-      <div class="card-header"><i class="fa fa-table"></i> Data Mahasiswa</div>
+      <div class="card-header"><i class="fa fa-table"></i> Data @yield('judul')</div>
       <div class="card-body">
         <p>Untuk Mengubah atau Menghapus Data Silahkan Klik 2x pada data yang ingin diubah atau dihapus.</p>
         <button type="button" id="tambah" class="btn btn-light waves-effect waves-light mb-3"><i class="fa fa-plus-circle"></i> Tambah Data</button>
@@ -36,7 +36,7 @@
 
 <div class="modal fade text-left" id="alertPertanyaan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content bg-staf">
+      <div class="modal-content bg-kaprodi">
           <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel1">Pilih Tindakan</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -55,7 +55,7 @@
   </div>
 </div>
 
-@include('pekerja.staf.mhs.form')
+@include('pekerja.kaprodi.dosen.form')
 
 @endsection
 
@@ -113,6 +113,7 @@
         $('#tombolForm').html('Simpan Data')
         $('#formKu').trigger("reset");
         $('.tampilModal').modal('show')
+        $('#status').val('').trigger('change');
         console.log(save_method)
     });
 
@@ -122,10 +123,10 @@
           var id = $('#id').val();
           var dataKu = $('#formKu').serialize();
           if (save_method=="add") { 
-              url="{{ route('StafMhs.store') }}"
+              url="{{ route('kaprodiDosen.store') }}"
               method="POST"
           } else {
-              url="StafMhs/"+id
+              url="kaprodiDosen/"+id
               method="PUT"
           }
           $.ajax({
@@ -140,9 +141,8 @@
                     aksi=$('.tampilModal').modal('hide')
                 }
               $('#id').val('');
-              $('#NPM').val('');
-              $('#nm_mhs').val('');
-              $('#alamat').val('');
+              $('#formKu').trigger("reset");
+              $('#status').val('').trigger('change');
               loadMoreData();
             //   pesan
           }
@@ -153,7 +153,7 @@
           })
           .fail(function(xhr, status, error)
             {
-              notifError(xhr.responseJSON.errors.NPM[0])
+              notifError(xhr.responseJSON.errors.NIDN)
             });
           console.log(save_method)
         });
