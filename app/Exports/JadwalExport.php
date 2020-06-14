@@ -33,24 +33,32 @@ class JadwalExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
     }
 
     private $id_prodi;
-    private $semester;
+    private $semester_ak;
     private $tahun_ak;
 
-    public function __construct($id_prodi,$semester,$tahun_ak)
+    public function __construct($id_prodi,$semester_ak,$tahun_ak)
     {
          $this->id_prodi = $id_prodi;
-         $this->semester = $semester;
+         $this->semester_ak = $semester_ak;
          $this->tahun_ak = $tahun_ak;
     }
 
 
     public function view(): View
     {
-        $jadwal = jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->orderByRaw('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")')
+        $jadwal = jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->orderByRaw('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")')
             ->orderBy('jam_mulai')
             ->get();
+        if ($this->id_prodi) {
+            $prodi=auth()->user()->dosen->prodi->nm_prodi;
+        }else{
+            $prodi="FAKULTAS SAINS & TEKNOLOGI";
+        }
             
-        return view ('admin.jadwal_perprodi.data',['jadwal'=>$jadwal]);
+        return view('pekerja.kaprodi.jadwal.data',[
+            'jadwal'=>$jadwal,
+            'prodi'=>$prodi,
+            ]);
     }
     public function registerEvents(): array
     {
@@ -67,7 +75,6 @@ class JadwalExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
                         ],
                     ],
                 ];
-                
                 $event->sheet->getDelegate()->getStyle('A1:H2')->getFont()->setSize(14);
                 $event->sheet->getDelegate()->getStyle('A1:H2')->getFont()->setBold(true);
                 $event->sheet->getDelegate()->getStyle('A4:H5')->getFont()->setSize(12);
@@ -91,38 +98,40 @@ class JadwalExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
                 $event->sheet->getDelegate()->getStyle('A3:H3')->applyFromArray($styleArray);
 
                 // Content
-                $senin =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Senin')->get()->count()-1;
-                $mulaiSenin=8+$senin;
-                $senin <= 0 ? $gabungSenin="A8:A8" : $gabungSenin= "A8:A$mulaiSenin";
-
-                $selasa =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Selasa')->get()->count()-1;
+                $senin =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Senin')->get();
+                $hitungSenin=$senin->count()-1;
+                $mulaiSenin=8+$hitungSenin;
+                $hitungSenin <= 0 ? $gabungSenin="A8:A8" : $gabungSenin= "A8:A$mulaiSenin";
+                
+                $selasa =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Selasa')->get();
+                $hitungSelasa=$selasa->count()-1;
                 $mulaiSelasa=$mulaiSenin+1;
-                $selesSelasa=$mulaiSelasa+$selasa;
-                $selasa <= 0 ? $gabungSelasa=$gabungSenin : $gabungSelasa= "A$mulaiSelasa:A$selesSelasa";
+                $selesSelasa=$mulaiSelasa+$hitungSelasa;
+                $hitungSelasa <= 0 ? $gabungSelasa=$gabungSenin : $gabungSelasa= "A$mulaiSelasa:A$selesSelasa";
 
-                $Rabu =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Rabu')->get()->count()-1;
-                $selasa == 0 ? $mulaiRabu=$selesSelasa : $mulaiRabu=$selesSelasa+1;
+                $Rabu =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Rabu')->get();
+                $hitungRabu=$Rabu->count()-1;
                 $mulaiRabu=$selesSelasa+1;
-                $selesRabu=$mulaiRabu+$Rabu;
-                $Rabu <= 0 ? $gabungRabu=$gabungSelasa : $gabungRabu= "A$mulaiRabu:A$selesRabu";
+                $selesRabu=$mulaiRabu+$hitungRabu;
+                $hitungRabu <= 0 ? $gabungRabu=$gabungSelasa : $gabungRabu= "A$mulaiRabu:A$selesRabu";
 
-                $Kamis =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Kamis')->get()->count()-1;
+                $Kamis =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Kamis')->get();
+                $hitungKamis=$Kamis->count()-1;
                 $mulaiKamis=$selesRabu+1;
-                $selesKamis=$mulaiKamis+$Kamis;
-                
-                $Kamis <= 0 ? $gabungKamis=$gabungRabu : $gabungKamis= "A$mulaiKamis:A$selesKamis";
+                $selesKamis=$mulaiKamis+$hitungKamis;
+                $hitungKamis <= 0 ? $gabungKamis=$gabungRabu : $gabungKamis= "A$mulaiKamis:A$selesKamis";
 
-                $Jumat =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Jumat')->get()->count()-1;
+                $Jumat =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Jumat')->get();
+                $hitungJumat=$Jumat->count()-1;
                 $mulaiJumat=$selesKamis+1;
-                $selesJumat=$mulaiJumat+$Jumat;
-                
-                $Jumat <= 0 ? $gabungJumat=$gabungKamis : $gabungJumat= "A$mulaiJumat:A$selesJumat";
+                $selesJumat=$mulaiJumat+$hitungJumat;
+                $hitungJumat <= 0 ? $gabungJumat=$gabungKamis : $gabungJumat= "A$mulaiJumat:A$selesJumat";
 
-                $Sabtu =jadwal::where('id_prodi',$this->id_prodi)->where('semester',$this->semester)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Sabtu')->get()->count()-1;
+                $Sabtu =jadwal::where('id_prodi','LIKE',$this->id_prodi)->where('semester_ak',$this->semester_ak)->where('tahun_ak',$this->tahun_ak)->where('hari', 'Sabtu')->get();
+                $hitungSabtu=$Sabtu->count()-1;
                 $mulaiSabtu=$selesJumat+1;
-                $selesSabtu=$mulaiSabtu+$Sabtu;
-                
-                $Sabtu <= 0 ? $gabungSabtu=$gabungJumat : $gabungSabtu= "A$mulaiSabtu:A$selesSabtu";
+                $selesSabtu=$mulaiSabtu+$hitungSabtu;
+                $hitungSabtu <= 0 ? $gabungSabtu=$gabungJumat : $gabungSabtu= "A$mulaiSabtu:A$selesSabtu";
 
                 $styleContent = [
                     'alignment' => [
@@ -141,6 +150,14 @@ class JadwalExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
                 $event->sheet->getDelegate()->mergeCells($gabungKamis);
                 $event->sheet->getDelegate()->mergeCells($gabungJumat);
                 $event->sheet->getDelegate()->mergeCells($gabungSabtu);
+                $event->sheet->getDelegate()->getStyle("A8:A$selesSabtu")->getAlignment()->setTextRotation(90);
+                $event->sheet->horizontalAlign("A8:A$selesSabtu" , Alignment::HORIZONTAL_CENTER);
+
+
+                // $event->sheet->getDelegate()->getStyle('B3:B7')->getFill()
+                //     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                //     ->getStartColor()->setARGB('FFFF0000');
+
                 $event->sheet->getDelegate()->getStyle("A7:H$selesSabtu")->applyFromArray($styleContent);
 
             },
