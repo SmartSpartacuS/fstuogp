@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use App\tool;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,16 +20,16 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $staf=Staf::where('username',Auth::user()->username)->first();
+        $tool=tool::where('username',Auth::user()->username)->first();
         
         if ($request->ajax()) {
             $view = view('pekerja.staf.profile.data', [
-                'staf'=>$staf,
+                'tool'=>$tool,
             ]);
             return $view;
         } 
         return view('pekerja.staf.profile.index', [
-            'staf'=>$staf,
+            'tool'=>$tool,
         ]);
     }
 
@@ -59,7 +60,7 @@ class ProfileController extends Controller
    
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->password_baru)]);
 
-        $staf=Staf::where('username',auth()->user()->username)
+        $tool=tool::where('username',auth()->user()->username)
             ->update([
                 'password'=>$request->password_baru,
             ]);

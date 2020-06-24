@@ -18,7 +18,7 @@ class MhsController extends Controller
      */
     public function index(Request $request)
     {
-        $mhs=mhs::where('id_prodi',auth()->user()->staf->id_prodi)->get();
+        $mhs=mhs::where('id_prodi',auth()->user()->tool->id_prodi)->get();
 
         // return $mhs;
         
@@ -117,7 +117,6 @@ class MhsController extends Controller
         mhs::where('id',$id)
             ->update([
                 'NPM'=>$request->NPM,
-                'id_prodi'=>auth()->user()->staf->id_prodi,
                 'nm_mhs'=>$request->nm_mhs,
                 'jenkel'=>$request->jenkel,
                 'angkatan'=>$request->angkatan,

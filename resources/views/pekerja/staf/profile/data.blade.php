@@ -4,7 +4,7 @@
         <tr>
             <td>Nama</td>
             <td>:</td>
-            <td>{{ $tool->nm_staf }}</td>
+            <td>{{ $tool->nm_tool }}</td>
         </tr>
         <tr>
             <td>Jenkel</td>
@@ -27,8 +27,8 @@
             <td>
                 <div class="row">
                     <div class="col-4">
-                        <a href="{{ asset($tool->foto_staf) }}" data-fancybox="group2">
-                            <img src="{{ asset($tool->foto_staf) }}" alt="lightbox" class="lightbox-thumb img-thumbnail">
+                        <a href="{{ asset($tool->foto_tool) }}" data-fancybox="group2">
+                            <img src="{{ asset($tool->foto_tool) }}" alt="lightbox" class="lightbox-thumb img-thumbnail">
                         </a>
                     </div>
                 </div>
