@@ -53,7 +53,7 @@ class MhsController extends Controller
     public function store(Request $request)
     {       
         $this->validate($request,[
-            'NPM'=>'required|unique:mhs|min:6|max:6',
+            'NPM'=>'required|unique:mhs|min:10|max:10',
         ],[
             'NPM.unique'=>'NPM Sudah ada',
         ]);

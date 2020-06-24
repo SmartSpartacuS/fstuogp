@@ -64,7 +64,6 @@ class matkulController extends Controller
         ]);
         $matkul = new matkul;
         $matkul->kd_matkul=$request->kd_matkul;
-        $matkul->id_prodi=$request->id_prodi;
         $matkul->nm_matkul=$request->nm_matkul;
         $matkul->sks=$request->sks;
         $matkul->semester=$request->semester;
@@ -122,7 +121,6 @@ class matkulController extends Controller
         matkul::where('id',$matkul->id)
             ->update([
                 'kd_matkul'=>$request->kd_matkul,
-                'id_prodi'=>$request->id_prodi,
                 'nm_matkul'=>$request->nm_matkul,
                 'sks'=>$request->sks,
                 'semester'=>$request->semester,

@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Prodi</th>
             <th>Kode Matkul</th>
             <th>Mata Kuliah</th>
             <th>SKS</th>
@@ -13,7 +12,6 @@
         @foreach ($matkul as $item)
         <tr class="clickable-row" data-id='{{ $item->id }}'>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->prodi->nm_prodi }}</td>
             <td>{{ $item->kd_matkul }}</td>
             <td>{{ $item->nm_matkul }}</td>
             <td>{{ $item->sks }}</td>
@@ -47,7 +45,6 @@
                             $('#kd_matkul').val(data.kd_matkul);
                             $('#nm_matkul').val(data.nm_matkul);
                             $('#sks').val(data.sks);
-                            $('#id_prodi').val(data.id_prodi).trigger('change');
                             $('#semester').val(data.semester).trigger('change');
                             $('.tampilModal').modal('show')
                             $('#judul').html('Silahkan Merubah Data')

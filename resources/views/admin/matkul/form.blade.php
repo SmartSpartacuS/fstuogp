@@ -13,19 +13,6 @@
                 @csrf
                 <input type="hidden" name="id" id="id">
                 <div class="row">
-                  <div class="col-sm-12 col-lg-12 col-xl-12">
-                      <div class="form-group">
-                          <div class="controls">
-                              <label for="id_prodi">Program Studi</label>
-                              <select name="id_prodi" id="id_prodi" class="select2 form-control" required data-validation-required-message="Tidak Boleh Kosong">
-                                  <option value="">Pilih Prodi</option>
-                                @foreach ($prodi as $item)  
-                                    <option value="{{ $item->id }}">{{ $item->nm_prodi }}</option>
-                                @endforeach
-                             </select>
-                          </div>
-                      </div>
-                  </div>
                   <div class="col-sm-5 col-lg-4 col-xl-4">
                       <div class="form-group">
                           <div class="controls">

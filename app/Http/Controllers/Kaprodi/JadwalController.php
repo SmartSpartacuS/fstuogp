@@ -20,7 +20,7 @@ class JadwalController extends Controller
      */
     public function index(Request $request)
     {
-        $matkul=matkul::where('id_prodi',auth()->user()->dosen->id_prodi)->get();
+        $matkul=matkul::orderBy('nm_matkul')->get();
         $dosen=dosen::orderBy('nm_dosen')->where('id_prodi',auth()->user()->dosen->id_prodi)->get();
         $ruang=ruang::orderBy('nm_ruang')->get();
         $param=jadwal::where('id_prodi',auth()->user()->dosen->id_prodi)->orderByDesc('tahun_ak')->get();

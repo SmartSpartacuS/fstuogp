@@ -139,7 +139,6 @@
         $('#judul').html('From Tambah Data')
         $('#tombolForm').html('Simpan Data')
         $('#formKu').trigger("reset");
-        $('#id_prodi').val('').trigger('change');
         $('#semester').val('').trigger('change');
         $('.tampilModal').modal('show')
     });

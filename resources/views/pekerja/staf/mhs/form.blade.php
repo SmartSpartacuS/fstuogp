@@ -15,8 +15,8 @@
                       <div class="col-sm-12 col-lg-4 col-xl-4">
                           <div class="form-group">
                               <div class="controls">
-                                  <label for="NPM">NPM</label>
-                                  <input type="text" name="NPM" id="NPM" class="nomor form-control" data-validation-regex-regex="([^a-z]*[A-Z]*)*" data-validation-containsnumber-regex="([^0-9]*[0-9]+)+" data-validation-required-message="6 Digit Terakhir" maxlength="6" minlength="6" placeholder="6 Digit Terakhir">
+                                  <label for="NPM">NPM </label>
+                                  <input type="text" name="NPM" id="NPM" class="nomor form-control" data-validation-regex-regex="([^a-z]*[A-Z]*)*" data-validation-containsnumber-regex="([^0-9]*[0-9]+)+" data-validation-required-message="10 Digit Terakhir" maxlength="10" minlength="10" placeholder="10 Digit Terakhir">
                               </div>
                           </div>
                       </div>

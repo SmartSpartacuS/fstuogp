@@ -21,6 +21,7 @@ class CreateStafsTable extends Migration
             $table->string('password',30);
             $table->string('jenkel',11);
             $table->text('alamat');
+            $table->string('foto_staf',100);
             $table->timestamps();
 
             $table->foreign('id_prodi')->references('id')->on('prodi')

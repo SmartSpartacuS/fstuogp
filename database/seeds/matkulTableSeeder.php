@@ -27,7 +27,6 @@ class matkulTableSeeder extends Seeder
         foreach (range(1,50) as $fk) {
             $this->matkul->create([
                 'kd_matkul' => Str::random(10),
-                'id_prodi' => prodi::inRandomOrder()->first()->id,
                 'nm_matkul'=>$this->faker->sentence(2),
                 'sks'=>rand(1,6),
                 'semester'=>rand(1,8),

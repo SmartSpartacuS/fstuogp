@@ -4,6 +4,10 @@
 
 @section('content')
 
+@section('css')
+  <link href="{{ asset('toolspekerja/plugins/fancybox/css/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css"/>
+@endsection
+
 <div class="row">
   <div class="col-12 col-lg-6">
     <div class="card">
@@ -13,9 +17,25 @@
            Data Profil
         </h5>
         <div id="tampil"></div>
+        <hr>
+        <button id="btnUbahProfil" class="btn btn-warning float-right mt-3"><i class="fa fa-check-square-o"></i> Ubah Profil</button>
       </div>
     </div>
+    {{-- Tampilan Ubah Profil --}}
+    <div class="card" id="cardUbahProfil" style="display: none">
+      <div class="card-body">
+        <h5 class="text-uppercase">
+          <i class="fa fa-address-book-o"></i>
+           Ubah Profil Masih Dalam Pengembangan
+        </h5>
+        <hr>
+        {{-- <button id="ubah" class="btn btn-success float-right mt-3"><i class="fa fa-check-square-o"></i> Simpan Perubahan</button> --}}
+        
+      </div>
+    </div>
+    {{-- End Ubah Profil --}}
   </div>
+
   <div class="col-12 col-lg-6">
     <div class="card">
       <div class="card-body">
@@ -51,7 +71,7 @@
           </div>
 
           <div class="form-footer">
-              <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Ubah Data</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Simpan Perubahan</button>
           </div>
         </form>
 
@@ -69,6 +89,8 @@
 {{-- Notif --}}
 <script src="{{ asset('toolspekerja/plugins/notifications/js/lobibox.min.js') }}"></script>
 <script src="{{ asset('toolspekerja/plugins/notifications/js/notifications.min.js') }}"></script>
+<script src="{{ asset('toolspekerja/plugins/fancybox/js/jquery.fancybox.min.js') }}"></script>
+
 {{-- Costum Notification --}}
 <script>
   function notifSucces(){
@@ -109,7 +131,7 @@
   <script>notifSucces()</script>
 @endif
 
-
+{{-- Validasi --}}
 <script>
   $().ready(function() {
     $("#personal-info").validate();
@@ -175,7 +197,7 @@
 
 </script>
 
-
+{{-- Load Data --}}
 <script>
   // Load Data
   function loadMoreData() {
@@ -193,5 +215,11 @@
         });
     }
     loadMoreData();
+</script>
+
+<script>
+  $('#btnUbahProfil').on('click', function(){
+    $('#cardUbahProfil').toggle();
+  })
 </script>
 @endsection

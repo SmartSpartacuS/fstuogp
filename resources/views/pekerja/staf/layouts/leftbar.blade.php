@@ -8,7 +8,7 @@
   </div>
   <div class="user-details">
    <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-     <div class="avatar"><img class="mr-3 side-user-img" src="{{ asset('images/uogp.png') }}" alt="user avatar"></div>
+     <div class="avatar"><img class="mr-3 side-user-img" src="{{ asset(Auth::user()->staf->foto_staf) }}" alt="Foto"></div>
       <div class="media-body">
       <h6 class="side-user-name">{{ Auth::user()->staf->nm_staf }}</h6>
      </div>

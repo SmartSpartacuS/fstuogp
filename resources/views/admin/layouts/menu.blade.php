@@ -47,7 +47,7 @@
                     </ul>
                 </li>
                 
-                <li class=" navigation-header"><span>UI Elements</span>
+                {{-- <li class=" navigation-header"><span>UI Elements</span>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Data List">Data List</span><span class="badge badge badge-primary badge-pill float-right mr-2">New</span></a>
                     <ul class="menu-content">
@@ -308,7 +308,7 @@
                 <li class=" nav-item"><a href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation"><i class="feather icon-folder"></i><span class="menu-title" data-i18n="Documentation">Documentation</span></a>
                 </li>
                 <li class=" nav-item"><a href="https://pixinvent.ticksy.com/"><i class="feather icon-life-buoy"></i><span class="menu-title" data-i18n="Raise Support">Raise Support</span></a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -34,38 +34,41 @@
     $(document).ready(function($) {
         $(".clickable-row").dblclick(function() {
             var href= $(this).data('id');
-            // $('#alertPertanyaan').modal('show')
-            //     $('#btnUbah').on('click',function(e){
-            //         e.preventDefault()
-            //         $('#alertPertanyaan').modal('hide')
-            //         save_method="Ubah"
-            //         $.ajax({
-            //             url: "dosen/"+href+"/edit", 
-            //             type: 'GET',
-            //             dataType: 'JSON',
-            //             beforeSend: function() {
-            //                 // lakukan sesuatu sebelum data dikirim
-            //                 console.log(href); 
-            //                 },
-            //             success: function(data) {
-            //                 // lakukan sesuatu jika data sudah terkirim
-            //                 $('#id').val(data.id);
-            //                 $('#NIDN').val(data.NIDN);
-            //                 $('#nm_dosen').val(data.nm_dosen);
-            //                 $('#alamat').val(data.alamat);
-            //                 if (data.jenkel == 'Laki-laki') {
-            //                     $('input:radio[name=jenkel][value="Laki-laki"]').prop('checked', true)
-            //                 } else {
-            //                     $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
-            //                 }
-            //                 $('.tampilModal').modal('show')
-            //                 $('#judul').html('Silahkan Merubah Data')
-            //                 $('#tombolForm').html('Ubah Data')
-            //             }
-            //         });
+            $('#alertPertanyaan').modal('show')
+                $('#btnUbah').on('click',function(e){
+                    e.preventDefault()
+                    $('#alertPertanyaan').modal('hide')
+                    save_method="Ubah"
+                    $.ajax({
+                        url: "dosen/"+href+"/edit", 
+                        type: 'GET',
+                        dataType: 'JSON',
+                        beforeSend: function() {
+                            // lakukan sesuatu sebelum data dikirim
+                            console.log(href); 
+                            },
+                        success: function(data) {
+                            // lakukan sesuatu jika data sudah terkirim
+                            $('#id').val(data.id);
+                            $('#NIDN').val(data.NIDN);
+                            $('#nm_dosen').val(data.nm_dosen);
+                            $('#alamat').val(data.alamat);
+                            if (data.jenkel == 'Laki-laki') {
+                                $('input:radio[name=jenkel][value="Laki-laki"]').prop('checked', true)
+                            } else {
+                                $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
+                            }
+                            $('#id_prodi').val(data.id_prodi).trigger('change');
+                            $('#status').val(data.status).trigger('change');
+                            $('#jabatan').val(data.jabatan).trigger('change');
+                            $('.tampilModal').modal('show')
+                            $('#judul').html('Silahkan Merubah Data. Jabatan dan Status Tidak Bisa Diubah')
+                            $('#tombolForm').html('Ubah Data')
+                        }
+                    });
                     
-            //     });
-            //     $('#btnHapus').on('click',function(){
+                });
+                $('#btnHapus').on('click',function(){
                     $('#alertPertanyaan').modal('hide')
                     var csrf_token=$('meta[name="csrf_token"]').attr('content');
                     Swal.fire({
@@ -100,7 +103,7 @@
                 })
             });
         });
-    // });
+    });
 </script>
 
 <script>

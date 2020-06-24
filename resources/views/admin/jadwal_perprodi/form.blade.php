@@ -41,7 +41,7 @@
                             <select name="id_matkul" id="id_matkul" class="select2 form-control" required data-validation-required-message="Tidak Boleh Kosong">
                                 <option value="">Pilih Matkul</option>
                               @foreach ($matkul as $item)  
-                                  <option value="{{ $item->id }}">{{ $item->prodi->kd_prodi }}-{{ $item->nm_matkul }}</option>
+                                  <option value="{{ $item->id }}">{{ $item->kd_matkul }} - {{ $item->nm_matkul }}</option>
                               @endforeach
                            </select>
                         </div>

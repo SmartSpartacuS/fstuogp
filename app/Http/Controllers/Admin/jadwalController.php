@@ -69,7 +69,7 @@ class jadwalController extends Controller
     {
        
         $prodi=Prodi::find($id);
-        $matkul=matkul::where('id_prodi',$id)->get();
+        $matkul=matkul::orderBy('nm_matkul')->get();
         $dosen=dosen::orderBy('nm_dosen')->get();
         $ruang=ruang::orderBy('nm_ruang')->get();
         $param=jadwal::where('id_prodi',$id)->orderByDesc('tahun_ak')->get();

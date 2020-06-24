@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Staf;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Support\Facades\Hash;
+use File;
 
 class StafController extends Controller
 {
@@ -52,6 +53,14 @@ class StafController extends Controller
         $password=app('App\Http\Controllers\Admin\mhsController')->generate_string($this->permitted_chars, 8);
         $id_user= User::orderByDesc('id')->first()->id+1;
 
+        if ($request->hasFile('foto_staf')) {
+            $name = time().'.'. $request->foto_staf->getClientOriginalExtension();
+            $foto_staf=$request->foto_staf->move( public_path() . '/images/staf/', $name);
+            $simpanFoto='images/staf/'.$name;
+        }else {
+            $simpanFoto='images/Tidak Ada.jpg';
+        }
+
         $data = Staf::create([
             'id'=>$id_user,
             'nm_staf'=>$request->nm_staf,
@@ -60,6 +69,7 @@ class StafController extends Controller
             'password'=>$password,
             'jenkel'=>$request->jenkel,
             'alamat'=>$request->alamat,
+            'foto_staf'=>$simpanFoto,
         ]);
 
         $user = User::create([
@@ -91,7 +101,8 @@ class StafController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Staf = Staf::find($id);
+        return $Staf;
     }
 
     /**
@@ -103,7 +114,21 @@ class StafController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        Staf::where('id',$id)
+            ->update([
+                'nm_staf'=>$request->nm_staf,
+                'id_prodi'=>$request->id_prodi,
+                'username'=>$request->username,
+                'jenkel'=>$request->jenkel,
+                'alamat'=>$request->alamat,
+            ]);
+        User::where('id',$id)
+            ->update([
+                'username'=>$request->username,
+                'email'=>$request->username,
+            ]);
     }
 
     /**

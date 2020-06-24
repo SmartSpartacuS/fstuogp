@@ -119,7 +119,7 @@ class dosenController extends Controller
      * @param  \App\dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, dosen $dosen)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'NIDN'=>'required|max:18',
@@ -134,14 +134,19 @@ class dosenController extends Controller
             'alamat.required'=>'Tidak Boleh Kosong Woyy',
         ]);
 
-        dosen::where('id',$dosen->id)
+        dosen::where('id',$id)
             ->update([
                 'NIDN'=>$request->NIDN,
                 'nm_dosen'=>$request->nm_dosen,
                 'jenkel'=>$request->jenkel,
+                'id_prodi'=>$request->id_prodi,
                 'alamat'=>$request->alamat,
             ]);
-
+        User::where('id',$id)
+            ->update([
+                'username'=>$request->NIDN,
+                'email'=>$request->NIDN,
+            ]);
     }
 
     /**

@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(fakultasTableSeeder::class);
         $this->call(prodiTableSeeder::class);
-        $this->call(matkulTableSeeder::class);
         $this->call(ruangTableSeeder::class);
+        // $this->call(matkulTableSeeder::class);
         // $this->call(dosenTableSeeder::class);
         // $this->call(jadwalTableSeeder::class);
     }

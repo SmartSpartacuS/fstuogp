@@ -16,16 +16,10 @@ class CreateMatkulTable extends Migration
         Schema::create('matkul', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('kd_matkul',10)->unique();
-            $table->unsignedBigInteger('id_prodi');
             $table->string('nm_matkul',100);
             $table->integer('sks');
             $table->integer('semester');
             $table->timestamps();
-
-            $table->foreign('id_prodi')->references('id')->on('prodi')
-                    ->onUpdate('CASCADE')
-                    ->onDelete('CASCADE');
-
         });
     }
 

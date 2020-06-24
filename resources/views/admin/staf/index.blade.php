@@ -1,4 +1,3 @@
-
 @extends('admin.layouts.default')
 
 @section('judul','Staf')
@@ -8,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/tables/datatable/datatables.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/forms/select/select2.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/css/plugins/forms/validation/form-validation.css') }}">
@@ -18,6 +16,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/animate/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/vendors/css/extensions/sweetalert2.min.css') }}">
+
      <!-- END: Page CSS-->
 
     
@@ -71,6 +70,30 @@
     </div>
 </div>
 
+{{-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Single File Upload</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <p class="card-text">This example uploads a single file using dropzone js library. By default, dropzone is a
+                        multiple file uploader and does not have specific option allowing us to switch to single file uploading
+                        mode, but this functionality can be achieved by adding more options to the plugin settings, such as
+                        <code>maxfilesexceeded</code> callback and <code>maxFiles</code> option set to 1. <code>maxFiles: 1</code>
+                        is used to tell dropzone that there should be only one file. When there is more then 1 file the function
+                        <code>maxfilesexceeded</code> will be called, with the exceeding file in the first parameter. Now only 1
+                        file can be selected and it will be replaced with another one instead of adding it to the preview.</p>
+                    <form action="#" class="dropzone dropzone-area" id="dpz-single-file">
+                        <div class="dz-message">Drop Files Here To Upload</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
 
 @include('admin.staf.form') 
 
@@ -99,6 +122,8 @@
 <script src="{{ asset('toolsAdmin/js/scripts/extensions/toastr.js') }}"></script>
 
 <script src="{{ asset('toolsAdmin/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+
+
 
 <script>
     $(document).ready(function () {
@@ -169,8 +194,8 @@
                     aksi=$('.tampilModal').modal('hide')
                 }
             
-              $('#NIDN').val('');
               $('#nm_staf').val('');
+              $('#username').val('');
               $('#alamat').val('');
               loadMoreData();
             //   pesan
