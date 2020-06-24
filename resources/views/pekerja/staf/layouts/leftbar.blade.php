@@ -3,14 +3,14 @@
     <div class="brand-logo">
      <a href="index.html">
       <img src="{{ asset('images/uogp.png') }}" class="logo-icon" alt="logo icon">
-      <h5 class="logo-text">Staf {{ Auth::user()->staf->prodi->nm_prodi }}</h5>
+      <h5 class="logo-text">Staf {{ Auth::user()->tool->prodi->nm_prodi }}</h5>
     </a>
   </div>
   <div class="user-details">
    <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-     <div class="avatar"><img class="mr-3 side-user-img" src="{{ asset(Auth::user()->staf->foto_staf) }}" alt="Foto"></div>
+     <div class="avatar"><img class="mr-3 side-user-img" src="{{ asset(Auth::user()->tool->foto_tool) }}" alt="Foto"></div>
       <div class="media-body">
-      <h6 class="side-user-name">{{ Auth::user()->staf->nm_staf }}</h6>
+      <h6 class="side-user-name">{{ Auth::user()->tool->nm_tool }}</h6>
      </div>
       </div>
     <div id="user-dropdown" class="collapse">

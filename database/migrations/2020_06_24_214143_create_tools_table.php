@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStafsTable extends Migration
+class CreateToolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateStafsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stafs', function (Blueprint $table) {
+        Schema::create('tools', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_staf',100);
+            $table->string('nm_tool',100);
             $table->unsignedBigInteger('id_prodi');
             $table->string('username',100)->unique();
             $table->string('password',30);
             $table->string('jenkel',11);
+            $table->string('jabatan',11);
             $table->text('alamat');
-            $table->string('foto_staf',100);
+            $table->string('foto_tool',100);
             $table->timestamps();
 
             $table->foreign('id_prodi')->references('id')->on('prodi')
@@ -37,6 +38,6 @@ class CreateStafsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stafs');
+        Schema::dropIfExists('tools');
     }
 }

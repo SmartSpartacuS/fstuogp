@@ -21,7 +21,7 @@
                 </li>
                 <li class="@yield('Dosen') nav-item"><a href="{{ route('dosen.index') }}"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Dosen</span></a>
                 </li>
-                <li class="@yield('Staf') nav-item"><a href="{{ route('staf.index') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Staf</span></a></li>
+                <li class="@yield('tool') nav-item"><a href="{{ route('tool.index') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">KaProdi / Staf</span></a></li>
                 <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Ecommerce">Mahasiswa</span></a>
                     <ul class="menu-content">
                         @foreach ($allProdi as $item) 

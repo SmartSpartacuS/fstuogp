@@ -15,7 +15,7 @@ Route::resource('jadwal', 'jadwalController');
 Route::get('jadwalPerProdi/{id}', 'jadwalController@jadwalPerProdi')->name('jadwalPerProdi');
 Route::post('jadwalExport', 'jadwalController@export')->name('jadwalExport');
 
-Route::resource('staf', 'StafController');
+Route::resource('tool', 'ToolController');
 
 Route::resource('aktif', 'aktifController');
 Route::resource('soal', 'soalController');

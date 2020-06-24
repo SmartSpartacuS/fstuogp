@@ -69,12 +69,11 @@ class dosenController extends Controller
         $dosen->id=$id_user;
         $dosen->NIDN=$request->NIDN;
         $dosen->nm_dosen=$request->nm_dosen;
-        $dosen->id_prodi=$request->id_prodi;
         $dosen->password=$password;
         $dosen->jenkel=$request->jenkel;
         $dosen->status=$request->status;
-        $dosen->jabatan=$request->jabatan;
         $dosen->alamat=$request->alamat;
+        $dosen->foto_dosen='images/Tidak Ada.jpg';
         
         $user= User::create([
             'id' => $id_user,
@@ -83,7 +82,7 @@ class dosenController extends Controller
             'password' => Hash::make($password),
         ]);
 
-        $user->assignRole($request->jabatan);
+        $user->assignRole('Dosen');
 
         $dosen->save();
 
@@ -139,7 +138,7 @@ class dosenController extends Controller
                 'NIDN'=>$request->NIDN,
                 'nm_dosen'=>$request->nm_dosen,
                 'jenkel'=>$request->jenkel,
-                'id_prodi'=>$request->id_prodi,
+                'status'=>$request->status,
                 'alamat'=>$request->alamat,
             ]);
         User::where('id',$id)
@@ -157,9 +156,8 @@ class dosenController extends Controller
      */
     public function destroy($id)
     {
-        $cari=dosen::find($id);
         $user=User::find($id);
-        $role= $user->removeRole($cari->jabatan);
+        $role= $user->removeRole('Dosen');
         dosen::destroy($id);
         User::destroy($user->id);
     }

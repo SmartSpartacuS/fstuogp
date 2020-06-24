@@ -16,8 +16,8 @@
                   <div class="col-sm-12 col-lg-7 col-xl-7">
                       <div class="form-group">
                           <div class="controls">
-                              <label for="nm_staf">Nama</label>
-                              <input type="text" name="nm_staf" id="nm_staf" class="form-control" required data-validation-required-message="Tidak Boleh Kosong">
+                              <label for="nm_tool">Nama</label>
+                              <input type="text" name="nm_tool" id="nm_tool" class="form-control" required data-validation-required-message="Tidak Boleh Kosong">
                           </div>
                       </div>
                   </div>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                   </div>
-                  <div class="col-sm-12 col-lg-7 col-xl-7">
+                  <div class="col-12 col-lg-6 col-xl-6">
                       <div class="form-group">
                           <div class="controls">
                             <label>Jenis Kelamin</label>
@@ -67,6 +67,18 @@
                           </div>
                       </div>
                   </div>
+                  <div class="col-12 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label for="jabatan">Jabatan</label>
+                            <select name="jabatan" id="jabatan" class="form-control select2" required data-validation-required-message="Tidak Boleh Kosong">
+                              <option value="">Pilih Jabatan</option>
+                              <option value="Ketua Prodi">Ketua Prodi</option>
+                              <option value="Staf">Staf</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
                   <div class="col-sm-12 col-lg-5 col-xl-5">
                     <div class="form-group">
                         <div class="controls">
@@ -75,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                  <div class="col-sm-12 col-lg-12 col-xl-12">
+                  <div class="col-sm-12 col-lg-7 col-xl-7">
                       <div class="form-group">
                           <div class="controls">
                               <label for="alamat">Alamat</label>

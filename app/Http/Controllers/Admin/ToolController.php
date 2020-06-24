@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Staf;
+use App\tool;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use File;
 
-class StafController extends Controller
+class ToolController extends Controller
 {
     private $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    
     /**
      * Display a listing of the resource.
      *
@@ -20,16 +18,16 @@ class StafController extends Controller
      */
     public function index(Request $request)
     {
-        $staf=Staf::all();
+        $tool=tool::all();
         // return $jadwal;
         
         if ($request->ajax()) {
-            $view = view('admin.staf.data', [
-                'staf'=>$staf,
+            $view = view('admin.tool.data', [
+                'tool'=>$tool,
             ]);
             return $view;
         } 
-        return view('admin.staf.index');
+        return view('admin.tool.index');
     }
 
     /**
@@ -53,23 +51,24 @@ class StafController extends Controller
         $password=app('App\Http\Controllers\Admin\mhsController')->generate_string($this->permitted_chars, 8);
         $id_user= User::orderByDesc('id')->first()->id+1;
 
-        if ($request->hasFile('foto_staf')) {
-            $name = time().'.'. $request->foto_staf->getClientOriginalExtension();
-            $foto_staf=$request->foto_staf->move( public_path() . '/images/staf/', $name);
-            $simpanFoto='images/staf/'.$name;
+        if ($request->hasFile('foto_tool')) {
+            $name = time().'.'. $request->foto_tool->getClientOriginalExtension();
+            $foto_tool=$request->foto_tool->move( public_path() . '/images/tool/', $name);
+            $simpanFoto='images/tool/'.$name;
         }else {
             $simpanFoto='images/Tidak Ada.jpg';
         }
 
-        $data = Staf::create([
+        $data = tool::create([
             'id'=>$id_user,
-            'nm_staf'=>$request->nm_staf,
+            'nm_tool'=>$request->nm_tool,
             'id_prodi'=>$request->id_prodi,
             'username'=>$request->username,
             'password'=>$password,
             'jenkel'=>$request->jenkel,
+            'jabatan'=>$request->jabatan,
             'alamat'=>$request->alamat,
-            'foto_staf'=>$simpanFoto,
+            'foto_tool'=>$simpanFoto,
         ]);
 
         $user = User::create([
@@ -79,7 +78,7 @@ class StafController extends Controller
             'password' => Hash::make($password),
         ]);
 
-        $user->assignRole('Staf');
+        $user->assignRole($request->jabatan);
     }
 
     /**
@@ -101,8 +100,8 @@ class StafController extends Controller
      */
     public function edit($id)
     {
-        $Staf = Staf::find($id);
-        return $Staf;
+        $tool = tool::find($id);
+        return $tool;
     }
 
     /**
@@ -114,11 +113,9 @@ class StafController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
-        Staf::where('id',$id)
+        tool::where('id',$id)
             ->update([
-                'nm_staf'=>$request->nm_staf,
+                'nm_tool'=>$request->nm_tool,
                 'id_prodi'=>$request->id_prodi,
                 'username'=>$request->username,
                 'jenkel'=>$request->jenkel,
@@ -140,8 +137,8 @@ class StafController extends Controller
     public function destroy($id)
     {
         $user=User::find($id);
-        $role= $user->removeRole('Staf');
-        Staf::destroy($id);
+        $role= $user->removeRole($user->tool->jabatan);
+        tool::destroy($id); 
         User::destroy($user->id);
     }
 }

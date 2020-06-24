@@ -36,12 +36,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function staf()
+    public function tool()
     {
-        return $this->belongsTo(Staf::class,'username','username');
+        return $this->hasOne(tool::class,'id');
     }
     public function dosen()
     {
-        return $this->belongsTo(dosen::class,'id');
+        return $this->hasOne(dosen::class,'id');
     }
 }

@@ -5,9 +5,7 @@
             <th>NIDN</th>
             <th>Nama Dosen</th>
             <th>Jenkel</th>
-            <th>Progdi</th>
             <th>Status</th>
-            <th>Jabatan</th>
             <th>Alamat</th>
             <th>Password</th>
         </tr>
@@ -19,9 +17,7 @@
             <td>{{ $item->NIDN }}</td>
             <td>{{ $item->nm_dosen }}</td>
             <td>{{ $item->jenkel }}</td>
-            <td>{{ $item->prodi->nm_prodi }}</td>
             <td>{{ $item->status }}</td>
-            <td>{{ $item->jabatan }}</td>
             <td>{{ $item->alamat }}</td>
             <td>{{ $item->password }}</td>
         </tr>
@@ -58,11 +54,9 @@
                             } else {
                                 $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
                             }
-                            $('#id_prodi').val(data.id_prodi).trigger('change');
                             $('#status').val(data.status).trigger('change');
-                            $('#jabatan').val(data.jabatan).trigger('change');
                             $('.tampilModal').modal('show')
-                            $('#judul').html('Silahkan Merubah Data. Jabatan dan Status Tidak Bisa Diubah')
+                            $('#judul').html('Silahkan Merubah Data.')
                             $('#tombolForm').html('Ubah Data')
                         }
                     });

@@ -5,18 +5,20 @@
             <th>Nama</th>
             <th>Jenkel</th>
             <th>Progdi</th>
+            <th>Jabatan</th>
             <th>Alamat</th>
             <th>Username</th>
             <th>Password</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($staf as $item)
+        @foreach ($tool as $item)
         <tr class="clickable-row" data-id='{{ $item->id }}'>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->nm_staf }}</td>
+            <td>{{ $item->nm_tool }}</td>
             <td>{{ $item->jenkel }}</td>
             <td>{{ $item->prodi->nm_prodi }}</td>
+            <td>{{ $item->jabatan }}</td>
             <td>{{ $item->alamat }}</td>
             <td>{{ $item->username }}</td>
             <td>{{ $item->password }}</td>
@@ -36,7 +38,7 @@
                     $('#alertPertanyaan').modal('hide')
                     save_method="Ubah"
                     $.ajax({
-                        url: "staf/"+href+"/edit", 
+                        url: "tool/"+href+"/edit", 
                         type: 'GET',
                         dataType: 'JSON',
                         beforeSend: function() {
@@ -46,8 +48,9 @@
                         success: function(data) {
                             // lakukan sesuatu jika data sudah terkirim
                             $('#id').val(data.id);
-                            $('#nm_staf').val(data.nm_staf);
+                            $('#nm_tool').val(data.nm_tool);
                             $('#id_prodi').val(data.id_prodi).trigger('change');
+                            $('#jabatan').val(data.jabatan).trigger('change');
                             $('#username').val(data.username);
                             $('#alamat').val(data.alamat);
                             if (data.jenkel == 'Laki-laki') {
@@ -56,7 +59,7 @@
                                 $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
                             }
                             $('.tampilModal').modal('show')
-                            $('#judul').html('Silahkan Merubah Data')
+                            $('#judul').html('Silahkan Merubah Data. Jabatan Tidak Bisa Diubah.')
                             $('#tombolForm').html('Ubah Data')
                         }
                     });
@@ -80,7 +83,7 @@
                     }).then(function (result) {
                     if (result.value) {
                         $.ajax({
-                            url: "staf/" + href,
+                            url: "tool/" + href,
                             type : "POST",
                             data : {'_method' : 'DELETE', '_token' :csrf_token},
                             success: function(response) {

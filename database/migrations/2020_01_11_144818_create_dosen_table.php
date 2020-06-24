@@ -17,17 +17,13 @@ class CreateDosenTable extends Migration
             $table->bigIncrements('id');
             $table->string('NIDN',18)->unique();
             $table->string('nm_dosen',100);
-            $table->unsignedBigInteger('id_prodi');
             $table->string('password',30);
             $table->string('jenkel',11);
-            $table->string('status', 5);
-            $table->string('jabatan', 13)->nullable();
+            $table->string('status', 12);
             $table->text('alamat');
+            $table->string('foto_dosen');
             $table->timestamps();
 
-            $table->foreign('id_prodi')->references('id')->on('prodi')
-                    ->onUpdate('CASCADE')
-                    ->onDelete('CASCADE');
         });
     }
 

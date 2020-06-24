@@ -29,7 +29,7 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-sm-12 col-lg-7 col-xl-7">
+                  <div class="col-sm-12 col-lg-6 col-xl-6">
                       <div class="form-group">
                           <div class="controls">
                             <label>Jenis Kelamin</label>
@@ -62,19 +62,6 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-sm-12 col-lg-5 col-xl-5">
-                      <div class="form-group">
-                          <div class="controls">
-                              <label for="id_prodi">Progdi</label>
-                              <select name="id_prodi" id="id_prodi" class="form-control select2" required data-validation-required-message="Tidak Boleh Kosong">
-                                  <option value="">Pilih Prodi</option>
-                                  @foreach ($allProdi as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nm_prodi }}</option>
-                                  @endforeach
-                              </select>
-                          </div>
-                      </div>
-                  </div>
                   <div class="col-sm-12 col-lg-6 col-xl-6">
                       <div class="form-group">
                           <div class="controls">
@@ -82,19 +69,7 @@
                               <select name="status" id="status" class="form-control select2" required data-validation-required-message="Tidak Boleh Kosong">
                                 <option value="">Pilih Status</option>
                                 <option value="Tetap">Tetap</option>
-                                <option value="Luar">Luar</option>
-                            </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 col-xl-6">
-                      <div class="form-group">
-                          <div class="controls">
-                              <label for="jabatan">Jabatan</label>
-                              <select name="jabatan" id="jabatan" class="form-control select2" required data-validation-required-message="Tidak Boleh Kosong">
-                                <option value="">Pilih Jabatan</option>
-                                <option value="Dosen">Dosen</option>
-                                <option value="Ketua Prodi">Ketua Prodi</option>
+                                <option value="Tidak Tetap">Tidak Tetap</option>
                             </select>
                           </div>
                       </div>
