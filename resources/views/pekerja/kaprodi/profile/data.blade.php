@@ -2,29 +2,37 @@
 <table class="table">
     <tbody>
         <tr>
-            <td>NIDN</td>
-            <td>:</td>
-            <td>{{ $dosen->NIDN }}</td>
-        </tr>
-        <tr>
             <td>Nama</td>
             <td>:</td>
-            <td>{{ $dosen->nm_dosen }}</td>
+            <td>{{ $tool->nm_tool }}</td>
         </tr>
         <tr>
             <td>Jenkel</td>
             <td>:</td>
-            <td>{{ $dosen->jenkel }}</td>
-        </tr>
-        <tr>
-            <td>Jabatan</td>
-            <td>:</td>
-            <td>{{ $dosen->jabatan }}</td>
+            <td>{{ $tool->jenkel }}</td>
         </tr>
         <tr>
             <td>Alamat</td>
             <td>:</td>
-            <td>{{ $dosen->alamat }}</td>
+            <td>{{ $tool->alamat }}</td>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td>:</td>
+            <td>{{ $tool->username }}</td>
+        </tr>
+        <tr>
+            <td>Foto</td>
+            <td>:</td>
+            <td>
+                <div class="row">
+                    <div class="col-4">
+                        <a href="{{ asset($tool->foto_tool) }}" data-fancybox="{{ $tool->nm_tool }}">
+                            <img src="{{ asset($tool->foto_tool) }}" alt="{{ $tool->nm_tool }}" class="lightbox-thumb img-thumbnail">
+                        </a>
+                    </div>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>

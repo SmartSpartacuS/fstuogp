@@ -50,7 +50,7 @@ class JadwalExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
             ->orderBy('jam_mulai')
             ->get();
         if ($this->id_prodi) {
-            $prodi=auth()->user()->dosen->prodi->nm_prodi;
+            $prodi=auth()->user()->tool->prodi->nm_prodi;
         }else{
             $prodi="FAKULTAS SAINS & TEKNOLOGI";
         }

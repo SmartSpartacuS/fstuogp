@@ -52,15 +52,10 @@ class matkulController extends Controller
         $this->validate($request,[
             'kd_matkul'=>'required|unique:matkul|max:10',
             'nm_matkul'=>'required',
-            'sks'=>'required',
-            'semester'=>'required',
+
         ],[
-            'kd_matkul.required'=>'Tidak Boleh Kosong Woyy',
             'kd_matkul.max'=>'Karakternya Kelebihan Woyy',
             'kd_matkul.unique'=>'Kode matkul Sudah ada',
-            'nm_matkul.required'=>'Tidak Boleh Kosong Woyy',
-            'sks.required'=>'Tidak Boleh Kosong Woyy',
-            'semester.required'=>'Tidak Boleh Kosong Woyy',
         ]);
         $matkul = new matkul;
         $matkul->kd_matkul=$request->kd_matkul;

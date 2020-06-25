@@ -2,6 +2,10 @@
 
 @section('judul','Profile')
 
+@section('css')
+  <link href="{{ asset('toolspekerja/plugins/fancybox/css/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css"/>
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -69,6 +73,7 @@
 {{-- Notif --}}
 <script src="{{ asset('toolspekerja/plugins/notifications/js/lobibox.min.js') }}"></script>
 <script src="{{ asset('toolspekerja/plugins/notifications/js/notifications.min.js') }}"></script>
+<script src="{{ asset('toolspekerja/plugins/fancybox/js/jquery.fancybox.min.js') }}"></script>
 {{-- Costum Notification --}}
 <script>
   function notifSucces(){

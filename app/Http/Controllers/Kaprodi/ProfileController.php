@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Kaprodi;
 
 use App\User;
-use App\dosen;
+use App\tool;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
@@ -18,16 +18,16 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $dosen=dosen::find(auth()->user()->id);
+        $tool=tool::find(auth()->user()->id);
         
         if ($request->ajax()) {
             $view = view('pekerja.kaprodi.profile.data', [
-                'dosen'=>$dosen,
+                'tool'=>$tool,
             ]);
             return $view;
         } 
         return view('pekerja.kaprodi.profile.index', [
-            'dosen'=>$dosen,
+            'tool'=>$tool,
         ]);
     }
 
@@ -57,7 +57,7 @@ class ProfileController extends Controller
    
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->password_baru)]);
 
-        $dosen=dosen::find(auth()->user()->id)
+        $tool=tool::find(auth()->user()->id)
             ->update([
                 'password'=>$request->password_baru,
             ]);

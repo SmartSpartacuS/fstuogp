@@ -30,7 +30,7 @@
         <button type="button" id="tambah" class="btn btn-light waves-effect waves-light mb-3"><i class="fa fa-plus-circle"></i> Tambah Data</button>
         <form id="exportExcel" method="POST">
             @csrf
-            <input type="hidden" id="id_prodi" name="id_prodi" data-id="{{ auth()->user()->dosen->id_prodi }}" value="">
+            <input type="hidden" id="id_prodi" name="id_prodi" data-id="{{ auth()->user()->tool->id_prodi }}" value="">
           <div class="row">
             
             <div class="col-6 col-md-3 col-lg-3 col-xl-2">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                 <div class="form-group">
-                    <button class="btn btn-info" id="exportProdi">Export Jadwal {{ auth()->user()->dosen->prodi->nm_prodi }}</button>
+                    <button class="btn btn-info" id="exportProdi">Export Jadwal {{ auth()->user()->tool->prodi->nm_prodi }}</button>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6 col-xl-3">

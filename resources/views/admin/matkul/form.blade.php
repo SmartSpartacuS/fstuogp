@@ -17,7 +17,7 @@
                       <div class="form-group">
                           <div class="controls">
                               <label for="kd_matkul">Kode Matkul</label>
-                              <input type="text" name="kd_matkul" id="kd_matkul" class="form-control" required data-validation-required-message="Tidak Boleh Kosong" autocomplete="off">
+                              <input type="text" name="kd_matkul" id="kd_matkul" class="form-control" required data-validation-required-message="Tidak Boleh Kosong">
                           </div>
                       </div>
                   </div>

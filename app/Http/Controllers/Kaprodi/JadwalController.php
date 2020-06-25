@@ -21,11 +21,11 @@ class JadwalController extends Controller
     public function index(Request $request)
     {
         $matkul=matkul::orderBy('nm_matkul')->get();
-        $dosen=dosen::orderBy('nm_dosen')->where('id_prodi',auth()->user()->dosen->id_prodi)->get();
+        $dosen=dosen::orderBy('nm_dosen')->get();
         $ruang=ruang::orderBy('nm_ruang')->get();
-        $param=jadwal::where('id_prodi',auth()->user()->dosen->id_prodi)->orderByDesc('tahun_ak')->get();
+        $param=jadwal::where('id_prodi',auth()->user()->tool->id_prodi)->orderByDesc('tahun_ak')->get();
 
-        $jadwal= jadwal::where('id_prodi',auth()->user()->dosen->id_prodi)
+        $jadwal= jadwal::where('id_prodi',auth()->user()->tool->id_prodi)
             ->where('semester_ak',$request->semester_ak)
             ->where('tahun_ak',$request->tahun_ak)
             ->orderByRaw('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")')
@@ -33,7 +33,7 @@ class JadwalController extends Controller
             ->get();
 
         // return $jadwal;
-        $prodi=auth()->user()->dosen->id_prodi;
+        $prodi=auth()->user()->tool->id_prodi;
         if ($request->ajax()) {
             $view = view('pekerja.kaprodi.jadwal.data', [
                 'jadwal'=>$jadwal,
@@ -70,7 +70,7 @@ class JadwalController extends Controller
     {
 
         $data = jadwal::create([
-            'id_prodi'=>auth()->user()->dosen->id_prodi,
+            'id_prodi'=>auth()->user()->tool->id_prodi,
             'id_matkul'=>$request->id_matkul,
             'id_ruang'=>$request->id_ruang,
             'id_dosen'=>$request->id_dosen,
@@ -144,7 +144,7 @@ class JadwalController extends Controller
     {
         
         if ($request->id_prodi) {
-            $prodi=auth()->user()->dosen->prodi->nm_prodi;
+            $prodi=auth()->user()->tool->prodi->nm_prodi;
         }else{
             $prodi="FST";
         }

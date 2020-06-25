@@ -172,9 +172,11 @@
             //   pesan
           }
           })
-          .fail(function(jqXHR, ajaxOptions, thrownError)
+          .fail(function(xhr, status, error)
             {
-                alert('Error. Kemungkinan Kode Sudah Ada.');
+            //   notifError(xhr.responseJSON.errors)
+            alert(xhr.responseJSON.errors.kd_matkul);
+            
             });
           console.log(save_method)
         });
