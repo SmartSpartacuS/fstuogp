@@ -51,13 +51,16 @@ class mhsController extends Controller
      */
     public function store(Request $request)
     {
+        $nm_mhs=strtolower($request->nm_mhs);
+        $nm_mhs= ucwords($nm_mhs);
+
         $password= $this->generate_string($this->permitted_chars, 8);
         $id_user= User::orderByDesc('id')->first()->id+1;
         $mhs = new mhs;
         $mhs->id=$id_user;
         $mhs->NPM=$request->NPM;
         $mhs->id_prodi=$request->id_prodi;
-        $mhs->nm_mhs=$request->nm_mhs;
+        $mhs->nm_mhs=$nm_mhs;
         $mhs->password=$password;
         $mhs->jenkel=$request->jenkel;
         $mhs->angkatan=$request->angkatan;
@@ -122,11 +125,13 @@ class mhsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $nm_mhs=strtolower($request->nm_mhs);
+        $nm_mhs= ucwords($nm_mhs);
         mhs::where('id',$id)
             ->update([
                 'NPM'=>$request->NPM,
                 'id_prodi'=>$request->id_prodi,
-                'nm_mhs'=>$request->nm_mhs,
+                'nm_mhs'=>$nm_mhs,
                 'jenkel'=>$request->jenkel,
                 'angkatan'=>$request->angkatan,
                 'alamat'=>$request->alamat,

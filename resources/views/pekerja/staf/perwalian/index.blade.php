@@ -22,7 +22,7 @@
     <div class="card">
       <div class="card-header"><i class="fa fa-table"></i> Data @yield('judul')</div>
       <div class="card-body">
-        <p>Untuk Menghapus Data Silahkan Klik 2x pada data yang ingin dihapus.</p>
+        <p>Untuk Menubah atau Menghapus Data Silahkan Klik 2x pada data yang ingin ubah atau dihapus.</p>
         <button type="button" id="tambah" class="btn btn-light waves-effect waves-light mb-3"><i class="fa fa-plus-circle"></i> Tambah Data</button>
 
         <div class="table-responsive">

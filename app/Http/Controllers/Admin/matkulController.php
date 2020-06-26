@@ -100,15 +100,12 @@ class matkulController extends Controller
     {
         $this->validate($request,[
             'kd_matkul'=>'required|max:10',
-            'id_prodi'=>'required|max:4',
             'nm_matkul'=>'required',
             'sks'=>'required',
             'semester'=>'required',
         ],[
             'kd_matkul.required'=>'Tidak Boleh Kosong Woyy',
             'kd_matkul.max'=>'Karakternya Kelebihan Woyy',
-            'id_prodi.required'=>'Tidak Boleh Kosong Woyy',
-            'id_prodi.max'=>'Karakternya Kelebihan Woyy',
             'nm_matkul.required'=>'Tidak Boleh Kosong Woyy',
             'sks.required'=>'Tidak Boleh Kosong Woyy',
             'semester.required'=>'Tidak Boleh Kosong Woyy',

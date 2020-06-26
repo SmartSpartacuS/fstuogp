@@ -18,10 +18,10 @@ class PerwalianController extends Controller
      */
     public function index(Request $request)
     {
-        $perwalian=perwalian::with('dosen')->get()->where('dosen.id_prodi',auth()->user()->staf->id_prodi)->all();
+        $perwalian=perwalian::with('mhs')->get()->where('mhs.id_prodi',auth()->user()->tool->id_prodi)->all();
         // return $mhs; 
         
-        $dosen=dosen::orderBy('nm_dosen')->where('id_prodi',auth()->user()->staf->id_prodi)->get();
+        $dosen=dosen::orderBy('nm_dosen')->where('Status','Tetap')->where('prodi_id',auth()->user()->tool->id_prodi)->get();
         
         if ($request->ajax()) {
             $view = view('pekerja.staf.perwalian.data', [
@@ -39,7 +39,7 @@ class PerwalianController extends Controller
     public function mhs()
     {
         $mhs=mhs::orderByDesc('NPM')
-            ->where('id_prodi',auth()->user()->staf->id_prodi)
+            ->where('id_prodi',auth()->user()->tool->id_prodi)
             ->whereNotIn('id',DB::table('perwalians')->pluck('mhs_id'))
             ->get();
         
@@ -89,7 +89,7 @@ class PerwalianController extends Controller
      */
     public function edit($id)
     {
-        $perwalian=perwalian::find($id);
+        $perwalian=perwalian::with('mhs')->find($id);
         return $perwalian;
     }
 
@@ -105,7 +105,6 @@ class PerwalianController extends Controller
         perwalian::where('id',$id)
             ->update([
                 'dosen_id'=>$request->dosen_id,
-                'mhs_id'=>$request->mhs_id,
             ]);
     }
 

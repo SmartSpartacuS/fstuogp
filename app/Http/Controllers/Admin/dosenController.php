@@ -69,6 +69,7 @@ class dosenController extends Controller
         $dosen->id=$id_user;
         $dosen->NIDN=$request->NIDN;
         $dosen->nm_dosen=$request->nm_dosen;
+        $dosen->prodi_id=$request->prodi_id;
         $dosen->password=$password;
         $dosen->jenkel=$request->jenkel;
         $dosen->status=$request->status;
@@ -137,6 +138,7 @@ class dosenController extends Controller
             ->update([
                 'NIDN'=>$request->NIDN,
                 'nm_dosen'=>$request->nm_dosen,
+                'prodi_id'=>$request->prodi_id,
                 'jenkel'=>$request->jenkel,
                 'status'=>$request->status,
                 'alamat'=>$request->alamat,

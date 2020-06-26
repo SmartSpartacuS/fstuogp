@@ -62,6 +62,19 @@
                           </div>
                       </div>
                   </div>
+                  <div class="col-sm-12 col-lg-5 col-xl-5">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label for="prodi_id">Progdi</label>
+                            <select name="prodi_id" id="prodi_id" class="form-control select2" required data-validation-required-message="Tidak Boleh Kosong">
+                                <option value="">Pilih Prodi</option>
+                                @foreach ($allProdi as $item)
+                                  <option value="{{ $item->id }}">{{ $item->nm_prodi }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
                   <div class="col-sm-12 col-lg-6 col-xl-6">
                       <div class="form-group">
                           <div class="controls">

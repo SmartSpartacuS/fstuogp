@@ -5,6 +5,7 @@
             <th>NIDN</th>
             <th>Nama Dosen</th>
             <th>Jenkel</th>
+            <th>Progdi</th>
             <th>Status</th>
             <th>Alamat</th>
             <th>Password</th>
@@ -17,6 +18,7 @@
             <td>{{ $item->NIDN }}</td>
             <td>{{ $item->nm_dosen }}</td>
             <td>{{ $item->jenkel }}</td>
+            <td>{{ $item->prodi->nm_prodi }}</td>
             <td>{{ $item->status }}</td>
             <td>{{ $item->alamat }}</td>
             <td>{{ $item->password }}</td>
@@ -55,6 +57,7 @@
                                 $('input:radio[name=jenkel][value="Perempuan"]').prop('checked', true)
                             }
                             $('#status').val(data.status).trigger('change');
+                            $('#prodi_id').val(data.prodi_id).trigger('change');
                             $('.tampilModal').modal('show')
                             $('#judul').html('Silahkan Merubah Data.')
                             $('#tombolForm').html('Ubah Data')

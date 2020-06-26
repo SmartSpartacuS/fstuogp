@@ -10,3 +10,4 @@ Route::get('StafPerwalian_mhs', 'PerwalianController@mhs')->name('staf.mhs');
 
 Route::resource('StafJadwal', 'JadwalController');
 Route::resource('StafProfile', 'ProfileController');
+Route::resource('StafKontrak', 'KontrakController');

@@ -32,13 +32,13 @@
          <i class="zmdi zmdi-male-female"></i> <span>Mahasiswa</span>
        </a>
     </li>
-     {{-- <li>
+     <li>
        <a href="{{ route('StafPerwalian.index') }}" class="waves-effect">
          <i class="zmdi zmdi-accounts-outline"></i> <span>Perwalian</span>
        </a>
-    </li> --}}
+    </li>
      <li>
-       <a href="{{ route('StafPerwalian.index') }}" class="waves-effect">
+       <a href="{{ route('StafKontrak.index') }}" class="waves-effect">
          <i class="zmdi zmdi-accounts-outline"></i> <span>Kontrak</span>
        </a>
     </li>
