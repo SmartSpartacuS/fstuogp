@@ -23,10 +23,10 @@
     <tfoot>
         <tr>
             <th>No</th>
-            <th>NIDN</th>
-            <th>Nama Dosen</th>
             <th>NPM</th>
             <th>Nama Mahasiswa</th>
+            <th>NIDN</th>
+            <th>Nama Dosen</th>
         </tr>
     </tfoot>
   </table>
