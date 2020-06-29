@@ -10,14 +10,7 @@ class DashboardController extends Controller
 {
     public function index ()
     {
-        $matkul= dosen::with(['jadwal'=>function($jadwal){
-            $jadwal->with('matkul');
-        }
-        ])->where('id',auth()->user()->id)->get();
-        
-        return view('pekerja.dosen.dashboard.index',[
-            'matkul'=>$matkul,
-        ]);
+        return view('pekerja.dosen.dashboard.index');
     }
     public function testing()
     {

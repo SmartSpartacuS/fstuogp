@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\dosen;
 use App\prodi;
 use Maatwebsite\Excel\Sheet;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,5 +39,17 @@ class AppServiceProvider extends ServiceProvider
 
         $allProdi = prodi::all();
         view()->share('allProdi', $allProdi);
+
+        //compose all the views....
+        view()->composer('*', function ($view) 
+        {
+            if (Auth::check()){
+                $matkul= dosen::with(['jadwal'=>function($jadwal){
+                    $jadwal->with('matkul');
+                }])->where('id',Auth::user()->id)->get();
+            //...with this variable
+            $view->with('menuMatkul', $matkul);
+            }    
+        });  
     }
 }

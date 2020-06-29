@@ -15,17 +15,17 @@
                 <li class="@yield('Dashboard')"><a href="{{ route('dosen') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                 </li>
                 <li class=" navigation-header"><span>Mata Kuliah</span></li>
-                @foreach ($matkul as $item)
+                @foreach ($menuMatkul as $item)
                     @foreach ($item->jadwal as $itemMatkul)
                         <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="{{ $itemMatkul->matkul->nm_matkul }}">{{ $itemMatkul->matkul->nm_matkul }}</span></a>
                             <ul class="menu-content">
                                 <li><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="UAS">UAS</span></a>
                                     <ul class="menu-content">
-                                        <li><a href="{{ $itemMatkul->id }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Aturan">Aturan</span></a>
+                                        {{-- <li id="aturan{{ $itemMatkul->id }}"><a href="{{ route('aturan.show',$itemMatkul->id) }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Aturan">Aturan</span></a>
+                                        </li> --}}
+                                        <li id="soal{{ $itemMatkul->id }}" ><a href="{{ route('soalDosen.show',$itemMatkul->id) }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Soal UAS">Soal UAS</span></a>
                                         </li>
-                                        <li><a href="{{ $itemMatkul->id }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Soal UAS">Soal UAS</span></a>
-                                        </li>
-                                        <li><a href="{{ $itemMatkul->id }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Tugas UAS">Tugas UAS</span></a>
+                                        <li><a href="{{ $itemMatkul->id }}"><i class="feather icon-check"></i><span class="menu-item" data-i18n="Jawaban">Jawaban</span></a>
                                         </li>
                                     </ul>
                                 </li>

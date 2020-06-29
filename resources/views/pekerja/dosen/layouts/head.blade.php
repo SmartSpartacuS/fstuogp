@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/daterange/daterangepicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('toolsAdmin/css/bootstrap-extended.css') }}">
     @yield('css')

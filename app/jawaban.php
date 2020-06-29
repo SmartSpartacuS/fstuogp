@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mydb\soal;
 use Illuminate\Database\Eloquent\Model;
 
 class jawaban extends Model
